@@ -5,11 +5,13 @@ homepage:
 
 environment:
   sdk: ^3.7.2
-  flutter: ">=1.17.0"
+  flutter: ">=3.7.2 <4.0.0"
 
 dependencies:
+  dio: ^5.8.0+1
   flutter:
     sdk: flutter
+
 
 dev_dependencies:
   flutter_test:
