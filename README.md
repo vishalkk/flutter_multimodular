@@ -13,4 +13,4 @@ A new Flutter project.
 
 ========================= OR =========================
 Lect-6-How-to-create-a-module
-1- --> flutter create -template=package core/data
+1- --> flutter create --template=package core/data
