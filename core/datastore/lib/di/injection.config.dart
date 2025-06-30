@@ -9,8 +9,13 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:datastore/provider/session_provider.dart' as _i265;
+import 'package:datastore/provider/session_providerimpl.dart' as _i312;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+
+const String _dev = 'dev';
+const String _prod = 'prod';
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -18,7 +23,15 @@ extension GetItInjectableX on _i174.GetIt {
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
-    _i526.GetItHelper(this, environment, environmentFilter);
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    gh.factory<_i265.SessionProvider>(
+      () => _i312.DevSessionProviderimpl(),
+      registerFor: {_dev},
+    );
+    gh.factory<_i265.SessionProvider>(
+      () => _i312.ProdSessionProviderimpl(),
+      registerFor: {_prod},
+    );
     return this;
   }
 }

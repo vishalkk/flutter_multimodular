@@ -1,4 +1,5 @@
 import 'package:app_settings/provider/App_settings_provider.dart';
+import 'package:datastore/provider/session_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multimodular_practice/di/injection.dart';
 import 'package:injectable/injectable.dart';
@@ -19,7 +20,7 @@ void main() {
   // This will generate the injection.config.dart file with the necessary code for dependency injection
   // After running the command, you can import the generated file in your main.dart file
   // and use the getIt instance to access the registered dependencies
-  configureDependencies(Environment.prod);
+  configureDependencies(Environment.dev);
   runApp(const MyApp());
 }
 
@@ -89,6 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
    final appSettingsProvider = getIt<AppSettingsProvider>();
+   final sessisonProvider = getIt<SessionProvider>();
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
@@ -120,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
              Text('App Language: ${appSettingsProvider.getAppLanguage()}'),
              Text('App Language: ${appSettingsProvider.themeType()}'),
-
+            Text('Client ID: ${sessisonProvider.getClientId()}'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
