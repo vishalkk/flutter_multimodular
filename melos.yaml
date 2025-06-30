@@ -22,6 +22,7 @@ command:
     get_it: ^8.0.3
     injectable: ^2.5.0
     json_annotation: ^4.8.0
+    pretty_dio_logger: ^1.2.0
 
 scripts:
   clean: melos clean
