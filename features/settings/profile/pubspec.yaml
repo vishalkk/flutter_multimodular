@@ -10,7 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_multimodular_practice:
+    path: ../../..
 dev_dependencies:
   flutter_test:
     sdk: flutter
