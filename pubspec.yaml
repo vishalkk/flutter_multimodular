@@ -30,6 +30,8 @@ environment:
 dependencies:
   app_settings:
     path: features/settings/app_settings
+  datastore:
+    path: core/datastore  
   dio: ^5.8.0+1
   get_it: 
   injectable:
