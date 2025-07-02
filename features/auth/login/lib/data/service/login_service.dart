@@ -6,7 +6,7 @@ part 'login_service.g.dart';
 
 @RestApi(baseUrl: "https://api.example.com")
 abstract class LoginService {
-  factory LoginService(Dio dio, {String baseUrl}) = _LoginService;
+  factory LoginService(Dio dio, {String baseUrl, ParseErrorLogger errorLogger}) = _LoginService;
 
 
   @POST("/customers/login")
