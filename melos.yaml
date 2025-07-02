@@ -25,6 +25,7 @@ command:
     json_annotation: ^4.8.0
     pretty_dio_logger: ^1.2.0
     retrofit: ^4.4.2
+    dartz: ^0.10.1
 
 scripts:
   clean: melos clean

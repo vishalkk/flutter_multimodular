@@ -5,13 +5,13 @@ part 'login_response.g.dart';
 @JsonSerializable()
 class LoginResponse {
   @JsonKey(name: 'name')
-  final String name;
+  final String? name;
 
   @JsonKey(name: 'phone')
-  final String phone;
+  final String? phone;
 
   @JsonKey(name: 'age')
-  final int age;
+  final int? age;
 
   LoginResponse({
     required this.name,
