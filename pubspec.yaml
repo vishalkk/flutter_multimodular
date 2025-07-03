@@ -31,7 +31,9 @@ dependencies:
   app_settings:
     path: features/settings/app_settings
   datastore:
-    path: core/datastore  
+    path: core/datastore
+  data:
+    path: core/data    
   dio: ^5.8.0+1
   get_it: 
   injectable:

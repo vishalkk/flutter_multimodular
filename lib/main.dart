@@ -1,10 +1,10 @@
 import 'package:app_settings/provider/App_settings_provider.dart';
-import 'package:datastore/provider/session_provider.dart';
+import 'package:datastore/provider/session/session_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multimodular_practice/di/injection.dart';
 import 'package:injectable/injectable.dart';
 
-void main() {
+Future<void> main()async {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize the dependency injection system
   // Configure dependencies for the development environment
@@ -20,7 +20,7 @@ void main() {
   // This will generate the injection.config.dart file with the necessary code for dependency injection
   // After running the command, you can import the generated file in your main.dart file
   // and use the getIt instance to access the registered dependencies
-  configureDependencies(Environment.dev);
+  await configureDependencies(Environment.dev);
   runApp(const MyApp());
 }
 

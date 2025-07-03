@@ -3,10 +3,15 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 class DioFactory {
+  final String baseUrl;
+  final String accessToken;
+  final String language;
 
-
-
-  DioFactory();
+  DioFactory({
+    required this.baseUrl,
+    required this.accessToken,
+    required this.language,
+  });
 
   Future<Dio> getDio()async{
     Dio dio = Dio();
@@ -14,13 +19,13 @@ class DioFactory {
     Map<String,dynamic> headers ={
       contentType: applicationJson,
       accept: applicationJson,
-      defaultLanguage: 'app_language',
-      authorization: 'access_token',
+      defaultLanguage: language,
+      authorization: accessToken,
       clientId: 'client_id',
     };
 
     dio.options = BaseOptions(
-      baseUrl: 'https://api.example.com',//TODO: base url
+      baseUrl: baseUrl,
 
       headers: headers,
       connectTimeout: const Duration(seconds: 30),
