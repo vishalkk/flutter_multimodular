@@ -2,7 +2,7 @@ import 'package:domain/model/localised_message.dart';
 
 class Failure {
 int? code;
- LocalisedMessage? message;
+ String? message;
 
   Failure( this.code,  this.message);
 }
