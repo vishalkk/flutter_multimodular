@@ -8,11 +8,9 @@ import 'package:login/data/service/login_service.dart';
 import 'package:login/domain/repository/login_repository.dart';
 import 'package:login/domain/usecase/login_usecase.dart';
 
-// Abstract class representing the Login module
-// This class is responsible for providing dependencies related to the login feature
+@module
 abstract class LoginModule {
-  // Provides an instance of LoginService by injecting a Dio instance
-  // LoginService is responsible for making API calls related to login
+  // Use the Dio instance provided by DataModule
   @lazySingleton
   LoginService provideLoginService(Dio dio) {
     return LoginService(dio);
@@ -31,16 +29,13 @@ abstract class LoginModule {
     return LoginRemoteDataSourceImpl(networkInfo, loginService);
   }
 
-  // Provides an instance of LoginRepository
-  // LoginRepository acts as an abstraction layer between the data sources and the domain layer
   @lazySingleton
   LoginRepository provideLoginRepository(
       LoginRemoteDataSource loginRemoteDataSource) {
     return LoginRepositoryImpl(loginRemoteDataSource);
   }
 
-  // Provides an instance of LoginUsecase
-  // LoginUsecase contains the business logic for login operations
+  @lazySingleton
   LoginUsecase provideLoginUsecase(LoginRepository loginRepository) {
     return LoginUsecase(loginRepository);
   }

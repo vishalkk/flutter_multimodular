@@ -12,6 +12,8 @@
 import 'package:datastore/di/datastore_module.dart' as _i746;
 import 'package:datastore/provider/preferences/preferences_provider.dart'
     as _i940;
+import 'package:datastore/provider/preferences/preferences_provider_impl.dart'
+    as _i779;
 import 'package:datastore/provider/session/session_provider.dart' as _i1014;
 import 'package:datastore/provider/session/session_providerimpl.dart' as _i612;
 import 'package:get_it/get_it.dart' as _i174;
@@ -41,6 +43,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1014.SessionProvider>(
       () => _i612.DevSessionProviderimpl(gh<_i460.SharedPreferences>()),
       registerFor: {_dev},
+    );
+    gh.factory<_i779.PreferencesProviderImpl>(
+      () => _i779.PreferencesProviderImpl(gh<_i460.SharedPreferences>()),
     );
     gh.factory<_i1014.SessionProvider>(
       () => _i612.ProdSessionProviderimpl(gh<_i460.SharedPreferences>()),

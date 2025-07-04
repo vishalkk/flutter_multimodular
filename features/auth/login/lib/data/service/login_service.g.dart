@@ -10,7 +10,7 @@ part of 'login_service.dart';
 
 class _LoginService implements LoginService {
   _LoginService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://api.example.com';
+    baseUrl ??= 'https://4wd91.wiremockapi.cloud/';
   }
 
   final Dio _dio;

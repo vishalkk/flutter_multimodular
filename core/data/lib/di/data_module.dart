@@ -1,6 +1,8 @@
 
 import 'package:data/di/data_module_keys.dart';
 import 'package:data/factory/dio_factory.dart';
+// import 'package:datastore/provider/preferences/preferences_provider_impl.dart';
+
 import 'package:datastore/provider/preferences/preferences_provider.dart';
 import 'package:datastore/provider/session/session_provider.dart';
 import 'package:dio/dio.dart';
@@ -22,11 +24,11 @@ String provideLanguage(PreferencesProvider preferencesProvider) {
   }
 
 
-  @lazySingleton
+@lazySingleton
 Dio dio(
-    @Named('baseUrl') String baseUrl,
-    @Named('accessToken') String accessToken,
-    @Named('language') String language,
+    @Named(DataModuleKeys.baseUrl) String baseUrl,
+    @Named(DataModuleKeys.accessToken) String accessToken,
+    @Named(DataModuleKeys.language) String language,
   ){
     final dioFactory= DioFactory(
       baseUrl: baseUrl,

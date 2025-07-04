@@ -1,6 +1,9 @@
 import 'package:datastore/provider/preferences/pref_string.dart';
 import 'package:datastore/provider/preferences/preferences_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:injectable/injectable.dart';
+
+@Injectable() // Correct annotation with uppercase "I"
 class PreferencesProviderImpl implements PreferencesProvider {
   final SharedPreferences _sharedPreferences;
 

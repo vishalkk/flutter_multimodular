@@ -34,6 +34,8 @@ dependencies:
     path: core/datastore
   data:
     path: core/data    
+  login:
+    path: features/auth/login  
   dio: ^5.8.0+1
   get_it: 
   injectable:

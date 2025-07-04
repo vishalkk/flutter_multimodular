@@ -26,8 +26,16 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dataModule = _$DataModule();
     gh.factory<String>(
+      () => dataModule.provideBaseUrl(gh<_i940.PreferencesProvider>()),
+      instanceName: 'baseUrl',
+    );
+    gh.factory<String>(
       () => dataModule.provideAccessToken(gh<_i1014.SessionProvider>()),
-      instanceName: 'AccessToken',
+      instanceName: 'accessToken',
+    );
+    gh.factory<String>(
+      () => dataModule.provideLanguage(gh<_i940.PreferencesProvider>()),
+      instanceName: 'language',
     );
     gh.lazySingleton<_i361.Dio>(
       () => dataModule.dio(
@@ -35,14 +43,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<String>(instanceName: 'accessToken'),
         gh<String>(instanceName: 'language'),
       ),
-    );
-    gh.factory<String>(
-      () => dataModule.provideBaseUrl(gh<_i940.PreferencesProvider>()),
-      instanceName: 'BaseUrl',
-    );
-    gh.factory<String>(
-      () => dataModule.provideLanguage(gh<_i940.PreferencesProvider>()),
-      instanceName: 'Language',
     );
     return this;
   }
