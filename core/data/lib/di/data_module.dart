@@ -23,11 +23,11 @@ String provideLanguage(PreferencesProvider preferencesProvider) {
 
 
   @lazySingleton
-  Future<Dio> dio(
+Dio dio(
     @Named('baseUrl') String baseUrl,
     @Named('accessToken') String accessToken,
     @Named('language') String language,
-  )async{
+  ){
     final dioFactory= DioFactory(
       baseUrl: baseUrl,
       accessToken: accessToken,

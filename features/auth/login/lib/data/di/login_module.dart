@@ -1,0 +1,47 @@
+import 'package:data/networkInfo/network_info_impl.dart';
+import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
+import 'package:login/data/remote/login_remote_data_source.dart';
+import 'package:login/data/remote/login_remote_data_source_impl.dart';
+import 'package:login/data/repository/login_repository_impl.dart';
+import 'package:login/data/service/login_service.dart';
+import 'package:login/domain/repository/login_repository.dart';
+import 'package:login/domain/usecase/login_usecase.dart';
+
+// Abstract class representing the Login module
+// This class is responsible for providing dependencies related to the login feature
+abstract class LoginModule {
+  // Provides an instance of LoginService by injecting a Dio instance
+  // LoginService is responsible for making API calls related to login
+  @lazySingleton
+  LoginService provideLoginService(Dio dio) {
+    return LoginService(dio);
+  }
+
+  // Provides an instance of NetworkInfoImpl
+  // This is used to check the network connectivity status
+  @lazySingleton
+  NetworkInfoImpl provideNetworkInfo() => NetworkInfoImpl();
+
+  // Provides an instance of LoginRemoteDataSource
+  // LoginRemoteDataSource handles remote data operations for login
+  @lazySingleton
+  LoginRemoteDataSource provideLoginRemoteDataSource(
+      LoginService loginService, NetworkInfoImpl networkInfo) {
+    return LoginRemoteDataSourceImpl(networkInfo, loginService);
+  }
+
+  // Provides an instance of LoginRepository
+  // LoginRepository acts as an abstraction layer between the data sources and the domain layer
+  @lazySingleton
+  LoginRepository provideLoginRepository(
+      LoginRemoteDataSource loginRemoteDataSource) {
+    return LoginRepositoryImpl(loginRemoteDataSource);
+  }
+
+  // Provides an instance of LoginUsecase
+  // LoginUsecase contains the business logic for login operations
+  LoginUsecase provideLoginUsecase(LoginRepository loginRepository) {
+    return LoginUsecase(loginRepository);
+  }
+}
