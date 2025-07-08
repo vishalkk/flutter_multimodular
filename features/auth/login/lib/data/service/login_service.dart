@@ -4,11 +4,16 @@ import 'package:dio/dio.dart';
 
 part 'login_service.g.dart';
 
-
-@RestApi(baseUrl: "https://4wd91.wiremockapi.cloud/")
+@RestApi(
+  baseUrl:
+      "https://api.mockfly.dev/mocks/dbdcf161-6133-48cf-a6f7-14856c3cd584/",
+)
 abstract class LoginService {
-  factory LoginService(Dio dio, {String baseUrl, ParseErrorLogger errorLogger}) = _LoginService;
-
+  factory LoginService(
+    Dio dio, {
+    String baseUrl,
+    ParseErrorLogger errorLogger,
+  }) = _LoginService;
 
   @POST("/customers/login")
   Future<HttpResponse<LoginResponse>> login(
@@ -16,5 +21,3 @@ abstract class LoginService {
     @Field("password") String password,
   );
 }
-
-

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multimodular_practice/di/injection.dart';
 import 'package:injectable/injectable.dart';
 import 'package:login/login.dart';
+import 'package:login/presentation/screen/login_screen.dart';
 
-Future<void> main()async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize the dependency injection system
   // Configure dependencies for the development environment
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoginScreen(),
     );
   }
 }
@@ -91,8 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-   final appSettingsProvider = getIt<AppSettingsProvider>();
-   final sessisonProvider = getIt<SessionProvider>();
+    final appSettingsProvider = getIt<AppSettingsProvider>();
+    final sessisonProvider = getIt<SessionProvider>();
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
@@ -122,8 +123,8 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-             Text('App Language: ${appSettingsProvider.getAppLanguage()}'),
-             Text('App Language: ${appSettingsProvider.themeType()}'),
+            Text('App Language: ${appSettingsProvider.getAppLanguage()}'),
+            Text('App Language: ${appSettingsProvider.themeType()}'),
             Text('Client ID: ${sessisonProvider.getClientId()}'),
             Text(
               '$_counter',

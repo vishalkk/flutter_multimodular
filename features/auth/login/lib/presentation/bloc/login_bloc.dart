@@ -1,5 +1,3 @@
-
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login/data/request/login_request.dart';
 import 'package:login/domain/usecase/login_usecase.dart';
@@ -14,22 +12,28 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<UsernameChanged>((event, emit) {
       final usernameError = validateUsername(event.username);
 
-      emit(LoginInvalid(
+      emit(
+        LoginInvalid(
           usernameError: usernameError,
-          passwordError: (state is LoginInvalid) ? state.passwordError : null));
+          passwordError: (state is LoginInvalid) ? state.passwordError : null,
+        ),
+      );
     });
 
     // handle PasswordChanged event
     on<PasswordChanged>((event, emit) {
       final passwordError = validateUsername(event.password);
 
-      emit(LoginInvalid(
+      emit(
+        LoginInvalid(
           passwordError: passwordError,
-          usernameError: (state is LoginInvalid) ? state.usernameError : null));
+          usernameError: (state is LoginInvalid) ? state.usernameError : null,
+        ),
+      );
     });
 
     // handle PasswordChanged event
-    on<LoginButtonPressed>((event, emit) async{
+    on<LoginButtonPressed>((event, emit) async {
       // do the logic here
       final usernameError = validateUsername(event.username);
       final passwordError = validateUsername(event.password);
@@ -37,23 +41,31 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // its safe to call login API
         emit(LoginLoading());
 
-        final loginRequest = LoginRequest(email: "vishalkajales@gmail.com",password:  "123456");
+        final loginRequest = LoginRequest(
+          email: "vishalkajales@gmail.com",
+          password: "123456",
+        );
 
         final result = await loginUseCase.execute(loginRequest);
-        result.fold((failure) {
-          // emit error
-          emit(LoginError(errorMessage: failure.message));
-
-        }, (loginModel) {
-          // emit success
-          print("Login Success: ${loginModel.name}");
-          emit(LoginSuccess());
-        });
-
+        result.fold(
+          (failure) {
+            // emit error
+            emit(LoginError(errorMessage: failure.message));
+          },
+          (loginModel) {
+            // emit success
+            print("Login Success: ${loginModel.name}");
+            emit(LoginSuccess());
+          },
+        );
       } else {
         // show invalid state
-        emit(LoginInvalid(
-            passwordError: passwordError, usernameError: usernameError));
+        emit(
+          LoginInvalid(
+            passwordError: passwordError,
+            usernameError: usernameError,
+          ),
+        );
       }
     });
   }
