@@ -5,5 +5,5 @@ enum StateRendererType {
   fullScreenErrorState,
   emptyState,
   contentState, // normal state (screen content state)
-  none // default
+  none, // default
 }

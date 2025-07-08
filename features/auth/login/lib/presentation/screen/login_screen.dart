@@ -5,6 +5,8 @@ import 'package:login/domain/usecase/login_usecase.dart';
 import 'package:login/presentation/bloc/login_bloc.dart';
 import 'package:login/presentation/bloc/login_event.dart';
 import 'package:login/presentation/bloc/login_state.dart';
+import 'package:presentation/state_rendere_type.dart';
+import 'package:presentation/state_rederer.dart';
 
 class LoginScreen extends StatelessWidget {
   final loginUseCase = getIt<LoginUsecase>();
@@ -24,14 +26,14 @@ class LoginScreen extends StatelessWidget {
             if (state is LoginSuccess) {
               // call the navigation on successful login to navigate to main screen
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                //     _navigateToHome(context);
+                // _navigateToHome(context);
               });
             }
 
             return Stack(
               children: [
                 _buildMainScreenContent(context, state),
-                //  _buildStateRenderer(context, state),
+                _buildStateRenderer(context, state),
               ],
             );
           },
@@ -89,20 +91,20 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  // Widget _buildStateRenderer(BuildContext context, LoginState state) {
-  //   if (state.stateRendererType == StateRendererType.contentState) {
-  //     // we don't want to display any overlay when the content of the screen is displayed
-  //     return SizedBox.shrink();
-  //   }
+  Widget _buildStateRenderer(BuildContext context, LoginState state) {
+    if (state.stateRendererType == StateRendererType.contentState) {
+      // we don't want to display any overlay when the content of the screen is displayed
+      return SizedBox.shrink();
+    }
 
-  //   return StateRenderer(
-  //     stateRendererType: state.stateRendererType,
-  //     message: (state is LoginError) ? state.errorMessage ?? "" : "",
-  //     retryActionFunction: () {
-  //       final username = usernameController.text;
-  //       final password = passwordController.text;
-  //       context.read<LoginBloc>().add(LoginButtonPressed(username, password));
-  //     },
-  //   );
-  // }
+    return StateRenderer(
+      stateRendererType: state.stateRendererType,
+      message: (state is LoginError) ? state.errorMessage ?? "" : "",
+      retryActionFunction: () {
+        final username = usernameController.text;
+        final password = passwordController.text;
+        context.read<LoginBloc>().add(LoginButtonPressed(username, password));
+      },
+    );
+  }
 }

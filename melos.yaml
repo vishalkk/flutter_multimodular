@@ -18,18 +18,17 @@ command:
     flutter_lints: ^5.0.0
 
   dependencies:
-    cupertino_icons: ^1.0.8
     dio: ^5.8.0+1
     get_it: ^8.0.3
     injectable: ^2.5.0
-    json_annotation: ^4.8.0
-    pretty_dio_logger: ^1.2.0
+    json_annotation: ^4.9.0
+    pretty_dio_logger: ^1.4.0
     retrofit: ^4.4.2
     dartz: ^0.10.1
     coonectivity_plus: ^6.1.3
     shared_preferences: ^2.5.3
-    uuid: ^3.0.7
-    flutter_bloc: ^8.1.3
+    uuid: ^4.5.1
+    flutter_bloc: ^9.1.0
     equatable: ^2.0.7
 
 

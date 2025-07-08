@@ -12,10 +12,10 @@ dependencies:
   injectable: ^2.5.0 
   dio: ^5.8.0+1
   retrofit: ^4.4.2
-  json_annotation: ^4.8.0
+  json_annotation: ^4.9.0
   dartz: ^0.10.1
   get_it: ^8.0.3
-  flutter_bloc: ^8.1.3 
+  flutter_bloc: ^9.1.0 
   equatable: ^2.0.7 
 
   datastore:
@@ -26,6 +26,10 @@ dependencies:
     path: ../../../core/domain
   extensions:
     path: ../../../core/extensions  
+  state:
+    path: ../../../core/state      
+  presentation:
+    path: ../../../core/presentation  
   flutter_multimodular_practice:
     path: ../../..
     
@@ -78,4 +82,7 @@ flutter:
   #         weight: 700
   #
   # For details regarding fonts in packages, see
-  # https://flutter.dev/to/font-from-package
+#   # https://flutter.dev/to/font-from-package
+# dependency_overrides:
+#   presentation:
+#     path: ../../../core/presentation
