@@ -39,7 +39,7 @@ class NavigationModule extends StatelessWidget {
               }
             }
           },
-          // child: HomePage(),
+          child: LoginScreen(),
         ),
       ),
     );

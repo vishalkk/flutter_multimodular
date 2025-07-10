@@ -36,6 +36,8 @@ dependencies:
     path: core/data    
   login:
     path: features/auth/login  
+  navigator:
+    path: core/navigator  
   get_it: 
   cupertino_icons: ^1.0.8
   melos: ^6.3.2

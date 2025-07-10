@@ -31,6 +31,8 @@ dependencies:
     path: ../../../core/presentation  
   flutter_multimodular_practice:
     path: ../../..
+  navigator:
+    path: ../../../core/navigator  
     
   flutter:
     sdk: flutter

@@ -5,6 +5,8 @@ import 'package:login/domain/usecase/login_usecase.dart';
 import 'package:login/presentation/bloc/login_bloc.dart';
 import 'package:login/presentation/bloc/login_event.dart';
 import 'package:login/presentation/bloc/login_state.dart';
+import 'package:navigator/navigation_bloc.dart';
+import 'package:navigator/navigation_event.dart';
 import 'package:presentation/state_rendere_type.dart';
 import 'package:presentation/state_rederer.dart';
 
@@ -26,7 +28,7 @@ class LoginScreen extends StatelessWidget {
             if (state is LoginSuccess) {
               // call the navigation on successful login to navigate to main screen
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                // _navigateToHome(context);
+                _navigateToHome(context);
               });
             }
 
@@ -42,12 +44,13 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  // void _navigateToHome(BuildContext context) {
-  //   context.read<NavigationBloc>().add(NavigateToMain());
-  //   // context
-  //   //     .read<NavigationBloc>()
-  //   //     .add(NavigateToRoute(NavigationRoutes.main, NavigationType.push));
-  // }
+  void _navigateToHome(BuildContext context) {
+    context.read<NavigationBloc>().add(NavigateToMain());
+    // Alternatively, you can use the following line to navigate to the main screen
+    // context
+    //     .read<NavigationBloc>()
+    //     .add(NavigateToRoute(NavigationRoutes.main, NavigationType.push));
+  }
 
   Widget _buildMainScreenContent(BuildContext context, LoginState state) {
     return Padding(

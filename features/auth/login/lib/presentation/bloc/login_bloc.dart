@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login/data/request/login_request.dart';
 import 'package:login/domain/usecase/login_usecase.dart';
@@ -40,11 +41,16 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       if (usernameError == null && passwordError == null) {
         // its safe to call login API
         emit(LoginLoading());
-
-        final loginRequest = LoginRequest(
-          email: "vishalkajales@gmail.com",
-          password: "123456",
-        );
+        String username;
+        String password;
+        if (kDebugMode) {
+          username = "vishalkajales@gmail.com";
+          password = "123456";
+        } else {
+          username = event.username;
+          password = event.password;
+        }
+        final loginRequest = LoginRequest(email: username, password: password);
 
         final result = await loginUseCase.execute(loginRequest);
         result.fold(
@@ -54,7 +60,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           },
           (loginModel) {
             // emit success
-            print("Login Success: ${loginModel.name}");
             emit(LoginSuccess());
           },
         );
