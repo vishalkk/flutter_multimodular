@@ -1,13 +1,22 @@
-name: state
+name: navigator
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
+publish_to: none
+
 
 environment:
   sdk: ^3.7.2
   flutter: ">=3.7.2 <4.0.0"
 
 dependencies:
+  flutter_multimodular_practice:
+    path: ../..
+  login:
+    path: ../../features/auth/login
+  main:
+    path: ../../features/home/main
+  flutter_bloc: ^9.1.0 
   flutter:
     sdk: flutter
 

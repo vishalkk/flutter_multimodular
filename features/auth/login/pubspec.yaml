@@ -26,8 +26,7 @@ dependencies:
     path: ../../../core/domain
   extensions:
     path: ../../../core/extensions  
-  state:
-    path: ../../../core/state      
+    
   presentation:
     path: ../../../core/presentation  
   flutter_multimodular_practice:
