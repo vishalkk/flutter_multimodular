@@ -6,6 +6,7 @@ import 'package:login/domain/usecase/login_usecase.dart';
 import 'package:login/presentation/bloc/login_bloc.dart';
 import 'package:login/presentation/screen/login_screen.dart';
 import 'package:main/main_screen.dart';
+import 'package:main/main_screen_bloc.dart';
 import 'package:navigator/navigation_bloc.dart';
 import 'package:navigator/navigation_routes.dart';
 import 'package:navigator/navigation_state.dart';
@@ -20,7 +21,7 @@ class NavigationModule extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => NavigationBloc()),
         BlocProvider(create: (context) => LoginBloc(getIt<LoginUsecase>())),
-        // BlocProvider(create: (context) => HomeBloc()),
+        BlocProvider(create: (context) => MainScreenBloc()),
       ],
       child: MaterialApp(
         routes: {
