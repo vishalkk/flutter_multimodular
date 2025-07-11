@@ -2,13 +2,23 @@ name: main
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
+publish_to: none # Remove this line if you wish to publish to pub.dev
 
 environment:
   sdk: ^3.7.2
   flutter: ">=3.7.2 <4.0.0"
 
 dependencies:
+  app_settings:
+    path: ../../settings/app_settings
+  profile:
+    path: ../../settings/profile
+  movies:
+    path: ../../movies
+
+
   flutter_bloc: ^9.1.0
+
   flutter:
     sdk: flutter
 
