@@ -4,16 +4,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main/main_event.dart';
 import 'package:main/main_screen_bloc.dart';
 import 'package:main/main_state.dart';
-import 'package:movies/movies_screen.dart';
+import 'package:movies/presentation/Screen/movies_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => MainScreenBloc(),
+      child: const MainScreenView(),
+    );
+  }
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class MainScreenView extends StatefulWidget {
+  const MainScreenView({super.key});
+
+  @override
+  State<MainScreenView> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreenView> {
   final List<Widget> _screens = [MoviesScreen(), SettingsScreen()];
   final List<String> items = List.generate(20, (index) => 'Item ${index + 1}');
 

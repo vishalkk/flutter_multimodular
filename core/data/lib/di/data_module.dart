@@ -1,8 +1,8 @@
 
 import 'package:data/di/data_module_keys.dart';
 import 'package:data/factory/dio_factory.dart';
-// import 'package:datastore/provider/preferences/preferences_provider_impl.dart';
-
+import 'package:data/networkInfo/network_info.dart';
+import 'package:data/networkInfo/network_info_impl.dart';
 import 'package:datastore/provider/preferences/preferences_provider.dart';
 import 'package:datastore/provider/session/session_provider.dart';
 import 'package:dio/dio.dart';
@@ -10,6 +10,9 @@ import 'package:injectable/injectable.dart';
 
 @module
 abstract class DataModule {
+  @lazySingleton
+  NetworkInfo provideNetworkInfo() => NetworkInfoImpl();
+
 @Named(DataModuleKeys.baseUrl)
 String provideBaseUrl(PreferencesProvider preferencesProvider) {
     return preferencesProvider.getBaseUrl();
@@ -22,7 +25,6 @@ String provideAccessToken(SessionProvider sessionProvider) {
 String provideLanguage(PreferencesProvider preferencesProvider) {
     return preferencesProvider.getAppLanguage();
   }
-
 
 @lazySingleton
 Dio dio(

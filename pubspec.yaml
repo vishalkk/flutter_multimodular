@@ -38,6 +38,8 @@ dependencies:
     path: features/auth/login  
   navigator:
     path: core/navigator  
+  movies:
+    path: features/movies  
   get_it: 
   cupertino_icons: ^1.0.8
   melos: ^6.3.2
