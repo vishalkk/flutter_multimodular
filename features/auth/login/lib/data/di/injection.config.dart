@@ -9,7 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:data/networkInfo/network_info_impl.dart' as _i668;
+import 'package:data/networkInfo/network_info.dart' as _i353;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -27,16 +27,13 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final loginModule = _$LoginModule();
-    gh.lazySingleton<_i668.NetworkInfoImpl>(
-      () => loginModule.provideNetworkInfo(),
-    );
     gh.lazySingleton<_i762.LoginService>(
       () => loginModule.provideLoginService(gh<_i361.Dio>()),
     );
     gh.lazySingleton<_i286.LoginRemoteDataSource>(
       () => loginModule.provideLoginRemoteDataSource(
         gh<_i762.LoginService>(),
-        gh<_i668.NetworkInfoImpl>(),
+        gh<_i353.NetworkInfo>(),
       ),
     );
     gh.lazySingleton<_i839.LoginRepository>(

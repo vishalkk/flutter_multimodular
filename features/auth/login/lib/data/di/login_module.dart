@@ -1,4 +1,4 @@
-import 'package:data/networkInfo/network_info_impl.dart';
+import 'package:data/networkInfo/network_info.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:login/data/remote/login_remote_data_source.dart';
@@ -18,20 +18,23 @@ abstract class LoginModule {
 
   // Provides an instance of NetworkInfoImpl
   // This is used to check the network connectivity status
-  @lazySingleton
-  NetworkInfoImpl provideNetworkInfo() => NetworkInfoImpl();
+  // @lazySingleton
+  // NetworkInfoImpl provideNetworkInfo() => NetworkInfoImpl();
 
   // Provides an instance of LoginRemoteDataSource
   // LoginRemoteDataSource handles remote data operations for login
   @lazySingleton
   LoginRemoteDataSource provideLoginRemoteDataSource(
-      LoginService loginService, NetworkInfoImpl networkInfo) {
+    LoginService loginService,
+    NetworkInfo networkInfo,
+  ) {
     return LoginRemoteDataSourceImpl(networkInfo, loginService);
   }
 
   @lazySingleton
   LoginRepository provideLoginRepository(
-      LoginRemoteDataSource loginRemoteDataSource) {
+    LoginRemoteDataSource loginRemoteDataSource,
+  ) {
     return LoginRepositoryImpl(loginRemoteDataSource);
   }
 
